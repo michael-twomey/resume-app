@@ -1,13 +1,16 @@
 import React from 'react';
 import ContactForm from './ContactForm';
+import ContactResume from './ContactResume';
 
 export default class Contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isContactFromOn: true,
+      isContactFormOn: true,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormClick = this.handleFormClick.bind(this);
+    this.handleResumeClick = this.handleResumeClick.bind(this);
   }
 
   handleInputChange(target) {
@@ -19,10 +22,33 @@ export default class Contact extends React.Component {
     });
   }
 
+  handleFormClick() {
+    this.setState({
+      isContactFormOn: false
+    });
+  }
+
+  handleResumeClick() {
+    this.setState({
+      isContactFormOn: true
+    });
+  }
+
   render() {
-    console.log(this.state.name)
+    const isContactFormOn = this.state.isContactFormOn;
+    const name = this.state.name;
+    if (isContactFormOn) {
+      return (
+        <ContactForm
+          name={name} 
+          handleInputChange={this.handleInputChange}
+          handleFormClick={this.handleFormClick} />
+      );
+    }
     return (
-      <ContactForm handleInputChange={this.handleInputChange} />
-    )
+      <ContactResume 
+        name={name}
+        handleResumeClick={this.handleResumeClick}/>
+    );
   }
 }
