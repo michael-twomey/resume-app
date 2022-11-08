@@ -15,7 +15,6 @@ export default class ContactResume extends React.Component {
     return (
       <div className="contact-res-container">
         <h1 className="name">{this.props.name}</h1>
-        <button onClick={this.handleClick}>Contact</button>
       </div>
     )
   }

@@ -27,7 +27,7 @@ export default class Contact extends React.Component {
   }
 
   handleResumeClick() {
-    this.props.handleResumeClick();
+    this.props.handleContactResClick();
   }
 
   render() {
@@ -44,7 +44,7 @@ export default class Contact extends React.Component {
     return (
       <ContactResume 
         name={name}
-        handleResumeClick={this.handleResumeClick} />
+        handleContactResClick={this.handleResumeClick} />
     );
   }
 }
