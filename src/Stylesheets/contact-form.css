@@ -1,0 +1,17 @@
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 1.5em;
+}
+
+.contact-prev-btn {
+  all: unset;
+  background-color: black;
+  border: 0.75px solid black;
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 1em;
+  padding: 0.25em 0 ;
+  text-align: center;
+  width: 99.5%;
+}

@@ -1,5 +1,7 @@
 import React from 'react';
-import Input from '../Util/Input'
+import Input from '../Util/Input';
+import '../Stylesheets/form.css';
+import '../Stylesheets/contact-form.css';
 
 export default class ContactForm extends React.Component {
   constructor(props) {
@@ -13,23 +15,30 @@ export default class ContactForm extends React.Component {
   }
 
   handleClick(e) {
-    this.props.handleFormClick()
+    this.props.handleFormClick();
   }
 
   render() {
     return (
-      <form>
-        <Input 
-          htmlFor="name"
-          id="name"
-          labelText="Name: "
-          type="text"
-          value={this.props.name}
-          varName="name"
-          handleInputChange={this.handleInputChange} />
-          
-        <button type="submit" onClick={this.handleClick}>Preview</button>
-      </form>
-    )
+      <div className="contact-form">
+        <h1 className="heading">Contact</h1>
+        <form className="form">
+          <Input 
+            htmlFor="name"
+            id="name"
+            labelText="Name: "
+            type="text"
+            value={this.props.name}
+            varName="name"
+            handleInputChange={this.handleInputChange} /> 
+          <button 
+            className="btn contact-prev-btn" 
+            type="submit" 
+            onClick={this.handleClick}>
+            Preview
+          </button>
+        </form>
+      </div>
+    );
   }
 }

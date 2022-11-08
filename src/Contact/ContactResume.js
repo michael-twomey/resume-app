@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Stylesheets/contact-resume.css';
 
 export default class ContactResume extends React.Component {
   constructor(props) {
@@ -12,11 +13,8 @@ export default class ContactResume extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <p>Name: </p>
-          <p>{this.props.name}</p>
-        </div>
+      <div className="contact-res-container">
+        <h1 className="name">{this.props.name}</h1>
         <button onClick={this.handleClick}>Contact</button>
       </div>
     )

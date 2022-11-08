@@ -6,7 +6,7 @@ export default class Contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isContactFormOn: true,
+      name: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormClick = this.handleFormClick.bind(this);
@@ -23,19 +23,15 @@ export default class Contact extends React.Component {
   }
 
   handleFormClick() {
-    this.setState({
-      isContactFormOn: false
-    });
+    this.props.handleContactFormClick();
   }
 
   handleResumeClick() {
-    this.setState({
-      isContactFormOn: true
-    });
+    this.props.handleResumeClick();
   }
 
   render() {
-    const isContactFormOn = this.state.isContactFormOn;
+    const isContactFormOn = this.props.isContactFormOn;
     const name = this.state.name;
     if (isContactFormOn) {
       return (
@@ -48,7 +44,7 @@ export default class Contact extends React.Component {
     return (
       <ContactResume 
         name={name}
-        handleResumeClick={this.handleResumeClick}/>
+        handleResumeClick={this.handleResumeClick} />
     );
   }
 }
