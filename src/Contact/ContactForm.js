@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from '../Util/Input'
 
 export default class ContactForm extends React.Component {
   constructor(props) {
@@ -18,11 +19,15 @@ export default class ContactForm extends React.Component {
   render() {
     return (
       <form>
-        <label>Name: </label>
-        <input
-          name="name"
+        <Input 
+          htmlFor="name"
+          id="name"
+          labelText="Name: "
+          type="text"
           value={this.props.name}
-          onChange={this.handleInputChange} />
+          varName="name"
+          handleInputChange={this.handleInputChange} />
+          
         <button type="submit" onClick={this.handleClick}>Preview</button>
       </form>
     )
