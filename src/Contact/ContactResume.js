@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Stylesheets/contact-resume.css';
+import '../Stylesheets/Contact/contact-resume.css';
 
 export default class ContactResume extends React.Component {
   constructor(props) {

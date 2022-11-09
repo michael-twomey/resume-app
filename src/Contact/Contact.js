@@ -9,7 +9,7 @@ export default class Contact extends React.Component {
       name: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleFormClick = this.handleFormClick.bind(this);
+    this.handlePrevClick = this.handlePrevClick.bind(this);
     this.handleResumeClick = this.handleResumeClick.bind(this);
   }
 
@@ -17,13 +17,11 @@ export default class Contact extends React.Component {
     const value = target.value;
     const name = target.name;
 
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   }
 
-  handleFormClick() {
-    this.props.handleContactFormClick();
+  handlePrevClick() {
+    this.props.handleContactPrevClick();
   }
 
   handleResumeClick() {
@@ -32,19 +30,21 @@ export default class Contact extends React.Component {
 
   render() {
     const isContactFormOn = this.props.isContactFormOn;
+    const isResumeOn = this.props.isResumeOn;
     const name = this.state.name;
     if (isContactFormOn) {
       return (
         <ContactForm
           name={name} 
           handleInputChange={this.handleInputChange}
-          handleFormClick={this.handleFormClick} />
+          handlePrevClick={this.handlePrevClick} />
       );
-    }
-    return (
-      <ContactResume 
-        name={name}
-        handleContactResClick={this.handleResumeClick} />
-    );
+    } else if (isResumeOn) {
+        return (
+          <ContactResume
+            name={name}
+            handleContactResClick={this.handleResumeClick} />
+        );
+    } return
   }
 }

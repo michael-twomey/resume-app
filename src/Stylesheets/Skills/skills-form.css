@@ -1,0 +1,36 @@
+.skills-form-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, min-content);
+  margin-bottom: 1.5em;
+}
+
+.backend-form {
+  grid-row: 4 / 5;
+}
+
+.skills-list-form {
+  font-family: Garamond serif;
+  font-size: 1.5rem;
+  list-style-type: square;
+  margin-left: 0.75em;
+}
+
+.skill:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.skills-prev-btn {
+  all: unset;
+  background-color: black;
+  border: 0.75px solid black;
+  color: white;
+  font-size: 1.5rem;
+  grid-column: 2 / 3;
+  grid-row: -1;
+  margin-top: 1.25em;
+  padding: 0.25em 0 ;
+  text-align: center;
+  width: 99.5%;
+}
