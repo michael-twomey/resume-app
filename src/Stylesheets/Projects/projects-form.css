@@ -1,0 +1,80 @@
+.project-form-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 1.5em;
+}
+
+.proj-add-btn,
+.proj-new-btn,
+.proj-prev-btn,
+.proj-del-btn,
+.proj-update-btn {
+  all: unset;
+  border: 0.75px solid black;
+  font-size: 1.5rem;
+  padding: 0.25em 0 ;
+  text-align: center;
+}
+
+.proj-add-btn,
+.proj-new-btn,
+.proj-prev-btn {
+  width: 99.5%;
+}
+
+.proj-del-btn,
+.proj-update-btn {
+  width: 49.75%;
+}
+
+.proj-new-btn,
+.proj-prev-btn,
+.proj-del-btn,
+.proj-update-btn {
+  grid-column: 2 / 3;
+}
+
+.proj-prev-btn {
+  background-color: black;
+  border: 0.75px solid black;
+  color: white;
+  margin-top: 1.25em;
+}
+
+.proj-new-btn {
+  margin-top: 0.75em;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  gap: 0.5em;
+  grid-column: 2 / 3;
+  list-style-type: none;
+  margin: 1em 0;
+}
+
+.bullet-container {
+  display: grid;
+  gap: 0.25em;
+  grid-template-columns: min-content 1fr;
+}
+
+.proj-form-name,
+.proj-form-date {
+  font-weight: bold;
+}
+
+.proj-form-name {
+  text-decoration: underline;
+}
+
+.proj-form-name:hover {
+  cursor: pointer;
+}
+
+.proj-form-bullet:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

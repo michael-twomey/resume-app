@@ -10,6 +10,9 @@ export default function ResumeButtons(props) {
         <button className="res-btn" data-text="Skills" onClick={props.handleSkillsResClick}>
           <span className="btn-span">Skills</span>
         </button>
+        <button className="res-btn" data-text="Projects" onClick={props.handleProjectsResClick}>
+          <span className="btn-span">Projects</span>
+        </button>
       </div>
     );
   }
