@@ -1,4 +1,4 @@
-.projects-res-container {
+.maincontent-res-container {
   display: grid;
   grid-column: 2 / 3;
   grid-template-columns: 1fr 4fr 1fr;

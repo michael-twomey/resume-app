@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '../Util/Input';
 import ProjectsPreview from './ProjectsPreview';
 import '../Stylesheets/form.css';
-import '../Stylesheets/Projects/projects-form.css';
+import '../Stylesheets/maincontent-form.css';
 
 export default class ProjectsForm extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class ProjectsForm extends React.Component {
 
   render() {
     return (
-      <div className="project-form-container">
+      <div className="projects-form-container">
         <h1 className="heading">Projects</h1>
         <form className="form">
           <Input
@@ -62,8 +62,7 @@ export default class ProjectsForm extends React.Component {
           </div>
           <button className="btn proj-add-btn" onClick={this.handleAddBulletClick}>Add Bullet</button>
         </form>
-        <ProjectsPreview
-          projects={this.props.projects} />
+        <ProjectsPreview projects={this.props.projects} />
         <button className="btn proj-new-btn" onClick={this.handleNewProjectClick}>New Project</button>
         <button className="btn proj-prev-btn" onClick={this.handlePrevClick}>Preview</button>
       </div>

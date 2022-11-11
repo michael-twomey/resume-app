@@ -1,11 +1,11 @@
 import React from 'react';
-import '../Stylesheets/Projects/projects-resume.css'
+import '../Stylesheets/maincontent-resume.css'
 
 export default class ProjectsResume extends React.Component {
   render() {
     const projects = this.props.projects;
     return (
-      <div className="projects-res-container">
+      <div className="maincontent-res-container">
         <h2 className="maincontent-head">Projects</h2>
         <div className="maincontent-container">
           {projects.map(project => {
@@ -25,7 +25,7 @@ export default class ProjectsResume extends React.Component {
                         <li>&#x2022;</li>
                         <li>{bullet}</li>
                       </div>
-                    )
+                    );
                   })}
                 </ul>
               </div>
