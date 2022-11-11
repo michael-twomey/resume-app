@@ -4,13 +4,13 @@ export default class ProjectsPreview extends React.Component {
   render() {
     const projects = this.props.projects;
     return (
-      <ul className="projects-list">
+      <ul className="proj-adv-list">
         {projects.map(project => {
           const projectName = project.projectName;
           const projectDate = project.projectDate;
           const projectBullets = project.projectBullets;
           return (
-            <li className="project-container">
+            <li>
               <p className="proj-form-name">{projectName}</p>
               <p className="proj-form-date">{projectDate}</p>
               {projectBullets.map(bullet => {

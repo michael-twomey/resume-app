@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '../Util/Input';
 import ProjectsPreview from './ProjectsPreview';
 import '../Stylesheets/form.css';
-import '../Stylesheets/maincontent-form.css';
+import '../Stylesheets/ProjAdv/proj-adv-form.css';
 
 export default class ProjectsForm extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class ProjectsForm extends React.Component {
 
   render() {
     return (
-      <div className="projects-form-container">
+      <div className="proj-adv-form-container">
         <h1 className="heading">Projects</h1>
         <form className="form">
           <Input
@@ -60,11 +60,11 @@ export default class ProjectsForm extends React.Component {
               onChange={this.handleInputChange} >
             </textarea>
           </div>
-          <button className="btn proj-add-btn" onClick={this.handleAddBulletClick}>Add Bullet</button>
+          <button className="btn proj-adv-add-btn" onClick={this.handleAddBulletClick}>Add Bullet</button>
         </form>
         <ProjectsPreview projects={this.props.projects} />
-        <button className="btn proj-new-btn" onClick={this.handleNewProjectClick}>New Project</button>
-        <button className="btn proj-prev-btn" onClick={this.handlePrevClick}>Preview</button>
+        <button className="btn proj-adv-new-btn" onClick={this.handleNewProjectClick}>New Project</button>
+        <button className="btn proj-adv-prev-btn" onClick={this.handlePrevClick}>Preview</button>
       </div>
     );
   }

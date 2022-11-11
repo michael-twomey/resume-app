@@ -3,13 +3,13 @@ import React from 'react';
 export default function AdventuresPreview(props) {
   const adventures = props.adventures;
   return (
-    <ul className="projects-list">
+    <ul className="proj-adv-list">
       {adventures.map(adventure => {
         const adventureName = adventure.adventureName;
         const adventureDate = adventure.adventureDate;
         const adventureBullets = adventure.adventureBullets;
         return (
-          <li className="project-container">
+          <li>
             <p className="proj-form-name">{adventureName}</p>
             <p className="proj-form-date">{adventureDate}</p>
             {adventureBullets.map(bullet => {

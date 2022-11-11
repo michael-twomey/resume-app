@@ -2,11 +2,11 @@ import React from 'react';
 import Input from '../Util/Input';
 import AdventuresPreview from './AdventuresPreview';
 import '../Stylesheets/form.css'
-import '../Stylesheets/maincontent-form.css';
+import '../Stylesheets/ProjAdv/proj-adv-form.css';
 
 export default function AdventuresForm(props) {
   return (
-    <div className="projects-form-container">
+    <div className="proj-adv-form-container">
       <h1 className="heading">Adventures</h1>
       <form className="form">
         <Input 
@@ -35,11 +35,11 @@ export default function AdventuresForm(props) {
             onChange={props.handleInputChange} >
           </textarea>
         </div>
-        <button className="btn proj-add-btn" onClick={props.handleAddBulletClick}>Add Bullet</button>
+        <button className="btn proj-adv-add-btn" onClick={props.handleAddBulletClick}>Add Bullet</button>
       </form>
       <AdventuresPreview adventures={props.adventures} />
-      <button className="btn proj-new-btn" onClick={props.handleNewAdventureClick}>New Adventure</button>
-      <button className="btn proj-prev-btn" onClick={props.handlePrevClick}>Preview</button>
+      <button className="btn proj-adv-new-btn" onClick={props.handleNewAdventureClick}>New Adventure</button>
+      <button className="btn proj-adv-prev-btn" onClick={props.handlePrevClick}>Preview</button>
     </div>
   );
 }

@@ -1,10 +1,10 @@
-.maincontent-res-container {
+.proj-adv-res-container {
   display: grid;
   grid-column: 2 / 3;
   grid-template-columns: 1fr 4fr 1fr;
 }
 
-.maincontent-head {
+.proj-adv-head {
   font-size: 2rem;
   grid-column: 2 / 3;
   letter-spacing: 0.25rem;
@@ -12,13 +12,13 @@
   text-align: center;
 }
 
-.maincontent-container {
+.proj-adv-content-container {
   display: grid;
   gap: 1em;
   grid-column: 2 / 3;
 }
 
-.maincontent-block {
+.proj-adv-block {
   display: grid;
   grid-template-columns: 1fr;
 }

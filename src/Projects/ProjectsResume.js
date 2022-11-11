@@ -1,19 +1,19 @@
 import React from 'react';
-import '../Stylesheets/maincontent-resume.css'
+import '../Stylesheets/ProjAdv/proj-adv-resume.css'
 
 export default class ProjectsResume extends React.Component {
   render() {
     const projects = this.props.projects;
     return (
-      <div className="maincontent-res-container">
-        <h2 className="maincontent-head">Projects</h2>
-        <div className="maincontent-container">
+      <div className="proj-adv-res-container">
+        <h2 className="proj-adv-head">Projects</h2>
+        <div className="proj-adv-content-container">
           {projects.map(project => {
             const projectName = project.projectName;
             const projectDate = project.projectDate;
             const projectBullets = project.projectBullets;
             return (
-              <div className="maincontent-block">
+              <div className="proj-adv-block">
                 <div className="block-toprow">
                   <h3 className="block-name">{projectName}</h3>
                   <p className="block-date">{projectDate}</p>
