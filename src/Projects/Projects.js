@@ -15,12 +15,11 @@ export default class Projects extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddBulletClick = this.handleAddBulletClick.bind(this);
     this.handleNewProjectClick = this.handleNewProjectClick.bind(this);
-    this.handlePrevClick = this.handlePrevClick.bind(this);
   }
 
-  handleInputChange(target) {
-    const name = target.name;
-    const value = target.value;
+  handleInputChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
     this.setState({ [name]: value });
   }
 
@@ -54,10 +53,6 @@ export default class Projects extends React.Component {
     });
   }
 
-  handlePrevClick() {
-    this.props.handleProjectsPrevClick();
-  }
-
   render() {
     const isResumeOn = this.props.isResumeOn;
     const isProjectsFormOn = this.props.isProjectsFormOn;
@@ -75,7 +70,7 @@ export default class Projects extends React.Component {
           handleInputChange={this.handleInputChange}
           handleAddBulletClick={this.handleAddBulletClick}
           handleNewProjectClick={this.handleNewProjectClick}
-          handlePrevClick={this.handlePrevClick} />
+          handlePrevClick={this.props.handleProjectsPrevClick} />
       );
     } else if (isResumeOn) {
       return (
