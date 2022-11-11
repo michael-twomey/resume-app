@@ -16,14 +16,13 @@ export default class App extends React.Component {
       isResumeOn: false
     }
     this.handleContactPrevClick = this.handleContactPrevClick.bind(this);
-    this.handleContactResClick = this.handleContactResClick.bind(this);
     this.handleSkillsPrevClick = this.handleSkillsPrevClick.bind(this);
-    this.handleSkillsResClick = this.handleSkillsResClick.bind(this);
     this.handleProjectsPrevClick = this.handleProjectsPrevClick.bind(this);
-    this.handleProjectsResClick = this.handleProjectsResClick.bind(this);
     this.handleAdventuresPrevClick = this.handleAdventuresPrevClick.bind(this);
+    this.handleContactResClick = this.handleContactResClick.bind(this);
+    this.handleSkillsResClick = this.handleSkillsResClick.bind(this);
+    this.handleProjectsResClick = this.handleProjectsResClick.bind(this);
     this.handleAdventuresResClick = this.handleAdventuresResClick.bind(this);
-
   }
 
   handleContactPrevClick() {
@@ -79,7 +78,7 @@ export default class App extends React.Component {
     this.setState({
       isAdventuresFormOn: true,
       isResumeOn: false
-    })
+    });
   }
 
   render() {
@@ -92,12 +91,10 @@ export default class App extends React.Component {
       <div className="res-app-container">
         <Contact 
           handleContactPrevClick={this.handleContactPrevClick}
-          handleContactResClick={this.handleContactResClick}
           isContactFormOn={isContactFormOn}
           isResumeOn={isResumeOn} />
         <Skills
           handleSkillsPrevClick={this.handleSkillsPrevClick}
-          handleSkillsResClick={this.handleSkillsResClick}
           isSkillsFormOn={isSkillsFormOn}
           isResumeOn={isResumeOn} />
         <Projects
@@ -116,6 +113,6 @@ export default class App extends React.Component {
           handleProjectsResClick={this.handleProjectsResClick}
           handleAdventuresResClick={this.handleAdventuresResClick} />
       </div>
-    )
+    );
   }
 }

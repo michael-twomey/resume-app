@@ -12,7 +12,6 @@ export default class Skills extends React.Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFrontendAddClick = this.handleFrontendAddClick.bind(this);
-    this.handlePrevClick = this.handlePrevClick.bind(this);
   }
 
   handleInputChange(target) {
@@ -32,10 +31,6 @@ export default class Skills extends React.Component {
     });
   }
 
-  handlePrevClick() {
-    this.props.handleSkillsPrevClick();
-  }
-
   render() {
     const isSkillsFormOn = this.props.isSkillsFormOn;
     const isResumeOn = this.props.isResumeOn;
@@ -48,12 +43,10 @@ export default class Skills extends React.Component {
           frontendValue={frontendValue}
           handleInputChange={this.handleInputChange}
           handleFrontendAddClick={this.handleFrontendAddClick}
-          handlePrevClick={this.handlePrevClick} />
+          handlePrevClick={this.props.handleSkillsPrevClick} />
       );
     } else if (isResumeOn) {
-        return (
-          <SkillsResume frontendSkills={frontendSkills} />
-        );
+        return <SkillsResume frontendSkills={frontendSkills} />;
     } return;
   }
 }

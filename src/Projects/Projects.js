@@ -73,9 +73,7 @@ export default class Projects extends React.Component {
           handlePrevClick={this.props.handleProjectsPrevClick} />
       );
     } else if (isResumeOn) {
-      return (
-        <ProjectsResume projects={projects} />
-      );
+      return <ProjectsResume projects={projects} />;
     } return;
   }
 }

@@ -9,23 +9,12 @@ export default class Contact extends React.Component {
       name: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handlePrevClick = this.handlePrevClick.bind(this);
-    this.handleResumeClick = this.handleResumeClick.bind(this);
   }
 
-  handleInputChange(target) {
-    const value = target.value;
-    const name = target.name;
-
+  handleInputChange(e) {
+    const value = e.target.value;
+    const name = e.target.name;
     this.setState({ [name]: value });
-  }
-
-  handlePrevClick() {
-    this.props.handleContactPrevClick();
-  }
-
-  handleResumeClick() {
-    this.props.handleContactResClick();
   }
 
   render() {
@@ -37,14 +26,10 @@ export default class Contact extends React.Component {
         <ContactForm
           name={name} 
           handleInputChange={this.handleInputChange}
-          handlePrevClick={this.handlePrevClick} />
+          handlePrevClick={this.props.handleContactPrevClick} />
       );
     } else if (isResumeOn) {
-        return (
-          <ContactResume
-            name={name}
-            handleContactResClick={this.handleResumeClick} />
-        );
-    } return
+        return <ContactResume name={name} />;
+    } return;
   }
 }
