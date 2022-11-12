@@ -8,7 +8,7 @@ export default function SkillsResume(props) {
         <h3>Frontend</h3>
         <h3>Backend</h3>
         <ul className="skills-list frontend">{props.frontendSkills.map(skill => <li>{skill}</li>)}</ul>
-        <ul className="skills-list backend"></ul>
+        <ul className="skills-list backend">{props.backendSkills.map(skill => <li>{skill}</li>)}</ul>
       </div>
   ` </div>
   );

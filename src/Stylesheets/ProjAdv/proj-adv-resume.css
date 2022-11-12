@@ -26,7 +26,7 @@
 .block-toprow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25em;
+  gap: 0.5em;
   grid-row: 1 / 2;
   justify-content: space-between;
 }

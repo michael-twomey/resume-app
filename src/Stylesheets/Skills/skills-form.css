@@ -18,7 +18,9 @@
 
 .skill:hover {
   cursor: pointer;
+  color: #DF0334;
   text-decoration: underline;
+  text-decoration-color: #DF0334;
 }
 
 .skills-prev-btn {
