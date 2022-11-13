@@ -80,7 +80,7 @@ export default class App extends React.Component {
       isResumeOn: false
     });
   }
-
+  
   render() {
     const isContactFormOn = this.state.isContactFormOn;
     const isSkillsFormOn = this.state.isSkillsFormOn;

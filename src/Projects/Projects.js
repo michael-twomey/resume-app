@@ -10,11 +10,15 @@ export default class Projects extends React.Component {
       projectDate: '',
       projectBullet: '',
       projectBullets: [],
-      projects: []
+      projects: [],
+      isUpdateMode: false,
+      updateProjectId: 0
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddBulletClick = this.handleAddBulletClick.bind(this);
     this.handleNewProjectClick = this.handleNewProjectClick.bind(this);
+    this.handleProjectClick = this.handleProjectClick.bind(this);
+    this.handleProjectDeleteClick = this.handleProjectDeleteClick.bind(this);
   }
 
   handleInputChange(e) {
@@ -38,11 +42,15 @@ export default class Projects extends React.Component {
     const projectName = this.state.projectName;
     const projectDate = this.state.projectDate;
     const projectBullets = this.state.projectBullets;
+    const id = generateId();
+    const key = id;
     const project = {
       projectName,
       projectDate,
-      projectBullets
-    }
+      projectBullets,
+      id,
+      key
+    };
     const projects = this.state.projects;
     const updatedProjects = projects.concat(project);
     this.setState({
@@ -53,6 +61,28 @@ export default class Projects extends React.Component {
     });
   }
 
+  handleProjectClick(e) {
+    let target = e.target;
+    while(target.id === "") {
+      target = target.parentNode;
+    }
+    const id = target.id;
+    this.setState({
+      isUpdateMode: true, 
+      updateProjectId: id
+    });
+  }
+
+  handleProjectDeleteClick() {
+    const projects = this.state.projects;
+    const updateProjectId = this.state.updateProjectId;
+    const updatedProjects = projects.filter(project => project.id != updateProjectId);
+    this.setState({
+      projects: updatedProjects,
+      isUpdateMode: false
+     });
+  }
+
   render() {
     const isResumeOn = this.props.isResumeOn;
     const isProjectsFormOn = this.props.isProjectsFormOn;
@@ -60,6 +90,7 @@ export default class Projects extends React.Component {
     const projectDate = this.state.projectDate;
     const projectBullet = this.state.projectBullet;
     const projects = this.state.projects;
+    const isUpdateMode = this.state.isUpdateMode;
     if (isProjectsFormOn) {
       return (
         <ProjectsForm
@@ -67,13 +98,20 @@ export default class Projects extends React.Component {
           projectDate={projectDate}
           projectBullet={projectBullet}
           projects={projects}
+          isUpdateMode={isUpdateMode}
           handleInputChange={this.handleInputChange}
           handleAddBulletClick={this.handleAddBulletClick}
           handleNewProjectClick={this.handleNewProjectClick}
+          handleProjectClick={this.handleProjectClick}
+          handleProjectDeleteClick={this.handleProjectDeleteClick}
           handlePrevClick={this.props.handleProjectsPrevClick} />
       );
     } else if (isResumeOn) {
       return <ProjectsResume projects={projects} />;
     } return;
   }
+}
+
+function generateId() {
+  return Math.random();
 }

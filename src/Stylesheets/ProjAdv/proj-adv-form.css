@@ -4,6 +4,14 @@
   margin-bottom: 1.5em;
 }
 
+.proj-adv-form-btm-btns {
+  grid-column: 2 / 3;
+}
+
+.proj-adv-update-del-btn-container {
+  display: flex;
+}
+
 .proj-adv-add-btn,
 .proj-adv-new-btn,
 .proj-adv-prev-btn,
@@ -72,6 +80,12 @@
 
 .proj-adv-form-name:hover {
   cursor: pointer;
+  color: #DF0334;
+}
+
+.proj-adv-form-date:hover {
+  cursor: pointer;
+  color: #DF0334;
 }
 
 .proj-adv-form-bullet:hover {
