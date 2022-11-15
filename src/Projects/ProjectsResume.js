@@ -21,7 +21,7 @@ export default function ProjectsResume(props) {
                   return (
                     <div className="block-detail">
                       <li>&#x2022;</li>
-                      <li>{bullet}</li>
+                      <li>{bullet.bulletText}</li>
                     </div>
                   );
                 })}

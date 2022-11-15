@@ -10,13 +10,16 @@ export default function ProjectsPreview(props) {
         const projectKey = project.key;
         return (
           <li id={projectId} key={projectKey}>
-            <p className="proj-adv-form-name" onClick={props.handleProjectClick}>{projectName}</p>
-            <p className="proj-adv-form-date" onClick={props.handleProjectClick}>{projectDate}</p>
+            <p className="proj-adv-form-name" onClick={props.handleProjectNameClick}>{projectName}</p>
+            <p className="proj-adv-form-date">{projectDate}</p>
             {projectBullets.map(bullet => {
+              const bulletText = bullet.bulletText;
+              const bulletId = bullet.id;
+              const bulletKey = bullet.key;
               return (
-                <div className="bullet-container">
+                <div className="bullet-container" id={bulletId} key={bulletKey} onClick={props.handleBulletClick}>
                   <p>&#x2022;</p>
-                  <p className="proj-adv-form-bullet">{bullet}</p>
+                  <p className="proj-adv-form-bullet">{bulletText}</p>
                 </div>
               );
             })}

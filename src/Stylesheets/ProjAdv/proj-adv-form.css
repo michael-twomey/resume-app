@@ -16,6 +16,7 @@
 .proj-adv-new-btn,
 .proj-adv-prev-btn,
 .proj-adv-del-btn,
+.proj-adv-save-btn,
 .proj-adv-update-btn {
   all: unset;
   border: 0.75px solid black;
@@ -31,14 +32,13 @@
 }
 
 .proj-adv-del-btn,
+.proj-adv-save-btn,
 .proj-adv-update-btn {
   width: 49.75%;
 }
 
 .proj-adv-new-btn,
-.proj-adv-prev-btn,
-.proj-adv-del-btn,
-.proj-update-btn {
+.proj-adv-prev-btn {
   grid-column: 2 / 3;
 }
 
@@ -79,11 +79,6 @@
 }
 
 .proj-adv-form-name:hover {
-  cursor: pointer;
-  color: #DF0334;
-}
-
-.proj-adv-form-date:hover {
   cursor: pointer;
   color: #DF0334;
 }

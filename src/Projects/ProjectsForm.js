@@ -41,12 +41,17 @@ export default class ProjectsForm extends React.Component {
         </form>
         <ProjectsPreview 
           projects={this.props.projects}
-          handleProjectClick={this.props.handleProjectClick} />
+          handleProjectNameClick={this.props.handleProjectNameClick}
+          handleBulletClick={this.props.handleBulletClick} />
         <UpdateButtons 
-          isUpdateMode={this.props.isUpdateMode}
-          handleProjectDeleteClick={this.props.handleProjectDeleteClick}
+          isEditProjectMode={this.props.isEditProjectMode}
+          isEditBulletMode={this.props.isEditBulletMode}
+          handleSaveProjectClick={this.props.handleSaveProjectClick}
+          handleDeleteProjectClick={this.props.handleDeleteProjectClick}
+          handleUpdateBulletClick={this.props.handleUpdateBulletClick}
+          handleDeleteBulletClick={this.props.handleDeleteBulletClick}
           handleNewProjectClick={this.props.handleNewProjectClick}
-          handlePrevClick={this.props.handleProjectPrevClick} />
+          handlePrevClick={this.props.handlePrevClick} />
       </div>
     );
   }

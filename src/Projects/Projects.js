@@ -11,14 +11,20 @@ export default class Projects extends React.Component {
       projectBullet: '',
       projectBullets: [],
       projects: [],
-      isUpdateMode: false,
-      updateProjectId: 0
+      isEditProjectMode: false,
+      isEditBulletMode: false,
+      editProjectId: 0,
+      editBulletId: 0
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddBulletClick = this.handleAddBulletClick.bind(this);
     this.handleNewProjectClick = this.handleNewProjectClick.bind(this);
-    this.handleProjectClick = this.handleProjectClick.bind(this);
-    this.handleProjectDeleteClick = this.handleProjectDeleteClick.bind(this);
+    this.handleProjectNameClick = this.handleProjectNameClick.bind(this);
+    this.handleSaveProjectClick = this.handleSaveProjectClick.bind(this);
+    this.handleDeleteProjectClick = this.handleDeleteProjectClick.bind(this);
+    this.handleBulletClick = this.handleBulletClick.bind(this);
+    this.handleUpdateBulletClick = this.handleUpdateBulletClick.bind(this);
+    this.handleDeleteBulletClick = this.handleDeleteBulletClick.bind(this);
   }
 
   handleInputChange(e) {
@@ -29,7 +35,14 @@ export default class Projects extends React.Component {
 
   handleAddBulletClick(e) {
     e.preventDefault();
-    const bullet = this.state.projectBullet;
+    const bulletText = this.state.projectBullet;
+    const id = generateId();
+    const key = id;
+    const bullet = {
+      bulletText,
+      id,
+      key
+    };
     const bullets = this.state.projectBullets;
     const updatedBullets = bullets.concat(bullet);
     this.setState({
@@ -61,26 +74,111 @@ export default class Projects extends React.Component {
     });
   }
 
-  handleProjectClick(e) {
+  handleProjectNameClick(e) {
     let target = e.target;
     while(target.id === "") {
       target = target.parentNode;
     }
     const id = target.id;
     this.setState({
-      isUpdateMode: true, 
-      updateProjectId: id
+      isEditProjectMode: true, 
+      editProjectId: id
     });
   }
 
-  handleProjectDeleteClick() {
+  handleSaveProjectClick() {
+    this.setState({ isEditProjectMode: false });
+  }
+
+  handleDeleteProjectClick() {
     const projects = this.state.projects;
-    const updateProjectId = this.state.updateProjectId;
-    const updatedProjects = projects.filter(project => project.id != updateProjectId);
+    const deleteProjectId = this.state.editProjectId;
+    const savedProjects = projects.filter(project => project.id != deleteProjectId);
+    this.setState({
+      projects: savedProjects,
+      isEditProjectMode: false
+     });
+  }
+
+  handleBulletClick(e) {
+    let bulletTarget = e.target;
+    while (bulletTarget.id == "") {
+      bulletTarget = bulletTarget.parentNode;
+    }
+    const bulletId = bulletTarget.id;
+    let projectTarget = e.target;
+    while (projectTarget.id == "" || projectTarget.id === bulletId) {
+      projectTarget = projectTarget.parentNode;
+    }
+    const projectId = projectTarget.id;
+    this.setState({
+      isEditBulletMode: true,
+      editBulletId: bulletId,
+      editProjectId: projectId
+    });
+    this.updateForm(projectId, bulletId)
+  }
+
+  updateForm(projectId, bulletId) {
+    const projects = this.state.projects;
+    const editProject = projects.filter(project => project.id == projectId)[0];
+    const bullets = editProject.projectBullets;
+    const editBullet = bullets.filter(bullet => bullet.id == bulletId)[0];
+    this.setState({
+      projectName: editProject.projectName,
+      projectDate: editProject.projectDate,
+      projectBullet: editBullet.bulletText
+    });
+  }
+
+  handleUpdateBulletClick() {
+    const projectId = this.state.editProjectId;
+    const bulletId = this.state.editBulletId;
+    const projects = this.state.projects;
+    const editProject = projects.filter(project => project.id == projectId)[0];
+    const editBullets = editProject.projectBullets;
+    const updatedBulletText = this.state.projectBullet;
+    const updatedBullets = editBullets.map(bullet => {
+      if (bullet.id == bulletId) {
+        bullet.bulletText = updatedBulletText
+      }
+      return bullet;
+    });
+    const updatedProjects = projects.map(project => {
+      if (project.id == projectId) {
+        project.projectBullets = updatedBullets;
+      }
+      return project
+    });
     this.setState({
       projects: updatedProjects,
-      isUpdateMode: false
-     });
+      isEditBulletMode: false,
+      projectName: '',
+      projectDate: '',
+      projectBullet: ''
+    });
+  }
+
+  handleDeleteBulletClick() {
+    const projectId = this.state.editProjectId;
+    const bulletId = this.state.editBulletId;
+    const projects = this.state.projects;
+    const editProject = projects.filter(project => project.id == projectId)[0];
+    const editBullets = editProject.projectBullets;
+    const updatedBullets = editBullets.filter(bullet => bullet.id != bulletId);
+    const updatedProjects = projects.map(project => {
+      if (project.id == projectId) {
+        project.projectBullets = updatedBullets;
+      }
+      return project;
+    });
+    this.setState({
+      projects: updatedProjects,
+      isEditBulletMode: false,
+      projectName: '',
+      projectDate: '',
+      projectBullet: ''
+    });
   }
 
   render() {
@@ -90,7 +188,8 @@ export default class Projects extends React.Component {
     const projectDate = this.state.projectDate;
     const projectBullet = this.state.projectBullet;
     const projects = this.state.projects;
-    const isUpdateMode = this.state.isUpdateMode;
+    const isEditProjectMode = this.state.isEditProjectMode;
+    const isEditBulletMode = this.state.isEditBulletMode;
     if (isProjectsFormOn) {
       return (
         <ProjectsForm
@@ -98,12 +197,17 @@ export default class Projects extends React.Component {
           projectDate={projectDate}
           projectBullet={projectBullet}
           projects={projects}
-          isUpdateMode={isUpdateMode}
+          isEditProjectMode={isEditProjectMode}
+          isEditBulletMode={isEditBulletMode}
           handleInputChange={this.handleInputChange}
           handleAddBulletClick={this.handleAddBulletClick}
           handleNewProjectClick={this.handleNewProjectClick}
-          handleProjectClick={this.handleProjectClick}
-          handleProjectDeleteClick={this.handleProjectDeleteClick}
+          handleProjectNameClick={this.handleProjectNameClick}
+          handleSaveProjectClick={this.handleSaveProjectClick}
+          handleDeleteProjectClick={this.handleDeleteProjectClick}
+          handleBulletClick={this.handleBulletClick}
+          handleUpdateBulletClick={this.handleUpdateBulletClick}
+          handleDeleteBulletClick={this.handleDeleteBulletClick}
           handlePrevClick={this.props.handleProjectsPrevClick} />
       );
     } else if (isResumeOn) {
