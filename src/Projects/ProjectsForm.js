@@ -1,11 +1,13 @@
 import React from 'react';
 import Input from '../Util/Input';
 import ProjectsPreview from './ProjectsPreview';
+import AddBulletButton from '../Util/AddBulletButton';
 import UpdateButtons from '../Util/UpdateButtons';
 import '../Stylesheets/form.css';
 import '../Stylesheets/ProjAdv/proj-adv-form.css';
 
 export default class ProjectsForm extends React.Component {
+  
   render() {
     return (
       <div className="proj-adv-form-container">
@@ -37,19 +39,24 @@ export default class ProjectsForm extends React.Component {
               onChange={this.props.handleInputChange} >
             </textarea>
           </div>
-          <button className="btn proj-adv-add-btn" onClick={this.props.handleAddBulletClick}>Add Bullet</button>
+          <AddBulletButton
+            isEditBulletMode={this.props.isEditBulletMode}
+            isUpdateBulletMode={this.props.isUpdateBulletMode}
+            handleAddBulletClick={this.props.handleAddBulletClick}
+            handleUpdateBulletClick={this.props.handleUpdateBulletClick}
+            handleDeleteBulletClick={this.props.handleDeleteBulletClick} />
         </form>
         <ProjectsPreview 
           projects={this.props.projects}
           handleProjectNameClick={this.props.handleProjectNameClick}
-          handleBulletClick={this.props.handleBulletClick} />
+          handleBulletClick={this.props.handleBulletClick}
+          editProjectId={this.props.editProjectId} />
         <UpdateButtons 
           isEditProjectMode={this.props.isEditProjectMode}
           isEditBulletMode={this.props.isEditBulletMode}
+          projects={this.props.projects}
           handleSaveProjectClick={this.props.handleSaveProjectClick}
           handleDeleteProjectClick={this.props.handleDeleteProjectClick}
-          handleUpdateBulletClick={this.props.handleUpdateBulletClick}
-          handleDeleteBulletClick={this.props.handleDeleteBulletClick}
           handleNewProjectClick={this.props.handleNewProjectClick}
           handlePrevClick={this.props.handlePrevClick} />
       </div>

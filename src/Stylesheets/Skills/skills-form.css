@@ -17,10 +17,10 @@
 }
 
 .skill:hover {
+  color: #E41376;
   cursor: pointer;
-  color: #DF0334;
   text-decoration: underline;
-  text-decoration-color: #DF0334;
+  text-decoration-color: #E41376;
 }
 
 .skills-prev-btn {

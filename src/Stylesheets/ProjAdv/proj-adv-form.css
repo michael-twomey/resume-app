@@ -4,6 +4,10 @@
   margin-bottom: 1.5em;
 }
 
+.proj-adv-prev-container {
+  border: 0.75px solid black;
+}
+
 .proj-adv-form-btm-btns {
   grid-column: 2 / 3;
 }
@@ -67,23 +71,29 @@
   display: grid;
   gap: 0.25em;
   grid-template-columns: min-content 1fr;
+  padding-bottom: 0.25em;
+  padding-left: 0.25em;
 }
 
 .proj-adv-form-name,
 .proj-adv-form-date {
   font-weight: bold;
+  padding-left: 0.25em;
 }
+
 
 .proj-adv-form-name {
   text-decoration: underline;
+  padding-top: 0.25em;
 }
 
 .proj-adv-form-name:hover {
+  color: #E41376;
   cursor: pointer;
-  color: #DF0334;
 }
 
 .proj-adv-form-bullet:hover {
+  color: #E41376;
   text-decoration: underline;
   cursor: pointer;
 }

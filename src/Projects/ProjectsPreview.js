@@ -1,5 +1,6 @@
 export default function ProjectsPreview(props) {
   const projects = props.projects;
+  const editProjectId = props.editProjectId;
   return (
     <ul className="proj-adv-list">
       {projects.map(project => {
@@ -9,7 +10,7 @@ export default function ProjectsPreview(props) {
         const projectId = project.id;
         const projectKey = project.key;
         return (
-          <li id={projectId} key={projectKey}>
+          <li className={editProjectId == projectId ? "proj-adv-prev-container" : ""} id={projectId} key={projectKey}>
             <p className="proj-adv-form-name" onClick={props.handleProjectNameClick}>{projectName}</p>
             <p className="proj-adv-form-date">{projectDate}</p>
             {projectBullets.map(bullet => {
