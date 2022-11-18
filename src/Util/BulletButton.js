@@ -1,6 +1,5 @@
-export default function AddBulletButton(props) {
+export default function BulletButton(props) {
   const isEditBulletMode = props.isEditBulletMode;
-  const isUpdateBulletMode = props.isUpdateBulletMode;
   if (isEditBulletMode) {
     return (
       <div className="proj-adv-update-del-btn-container">
@@ -9,6 +8,6 @@ export default function AddBulletButton(props) {
     </div>
     );
   } else {
-    return <button className="btn proj-adv-add-btn" onClick={props.handleAddBulletClick}>Add Bullet</button>;
+    return <button className="btn proj-adv-add-btn" onClick={props.handleBulletBtnClick}>Add Bullet</button>;
   }
 }

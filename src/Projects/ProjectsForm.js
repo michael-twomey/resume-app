@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../Util/Input';
 import ProjectsPreview from './ProjectsPreview';
-import AddBulletButton from '../Util/AddBulletButton';
+import BulletButton from '../Util/BulletButton';
 import UpdateButtons from '../Util/UpdateButtons';
 import '../Stylesheets/form.css';
 import '../Stylesheets/ProjAdv/proj-adv-form.css';
@@ -39,10 +39,10 @@ export default class ProjectsForm extends React.Component {
               onChange={this.props.handleInputChange} >
             </textarea>
           </div>
-          <AddBulletButton
+          <BulletButton
             isEditBulletMode={this.props.isEditBulletMode}
             isUpdateBulletMode={this.props.isUpdateBulletMode}
-            handleAddBulletClick={this.props.handleAddBulletClick}
+            handleBulletBtnClick={this.props.handleBulletBtnClick}
             handleUpdateBulletClick={this.props.handleUpdateBulletClick}
             handleDeleteBulletClick={this.props.handleDeleteBulletClick} />
         </form>

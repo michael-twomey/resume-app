@@ -1,3 +1,0 @@
-Resume with updateBullet() in Projects.js
-
-Essentially need to copy commenteded out code from handleUpdateClick() into updateBullet(), I beleive

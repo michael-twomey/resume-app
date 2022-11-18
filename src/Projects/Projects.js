@@ -19,7 +19,7 @@ export default class Projects extends React.Component {
       addBulletClickCount: 0
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleAddBulletClick = this.handleAddBulletClick.bind(this);
+    this.handleBulletBtnClick = this.handleBulletBtnClick.bind(this);
     this.handleNewProjectClick = this.handleNewProjectClick.bind(this);
     this.handleProjectNameClick = this.handleProjectNameClick.bind(this);
     this.handleSaveProjectClick = this.handleSaveProjectClick.bind(this);
@@ -35,47 +35,30 @@ export default class Projects extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleAddBulletClick(e) {
+  handleBulletBtnClick(e) {
     e.preventDefault();
     const bullet = this.state.projectBullet;
     if (!bullet) {
       return;
     }
-    const projects = this.state.projects;
     const isEditProjectMode = this.state.isEditProjectMode;
     let addBulletClickCount = this.state.addBulletClickCount;
-
     if (e.target.textContent === 'Update Bullet') {
       this.updateBullet();
     } else if (addBulletClickCount === 0 && !isEditProjectMode) {
-      this.handleAddFirstBulletClick()
+      this.handleFirstBulletBtnClick();
     } else if (isEditProjectMode) {
-      this.handleEditProjectModeAddBulletClick()
-    }
-    else {
-      const projectName = this.state.projectName;
-      const projectDate = this.state.projectDate;
+      const editProjectId = this.state.editProjectId
+      this.handleAddBulletBtnClick(editProjectId);
+    } else {
       const projectId = this.state.projectId;
-      const updatedBullets = this.addBullet()
-      const updatedProjects = projects.map(project => {
-        if (project.id == projectId) {
-          project.projectName = projectName;
-          project.projectDate = projectDate;
-          project.projectBullets = updatedBullets;
-        }
-        return project;
-      });
-      this.setState({
-        projects: updatedProjects,
-        projectBullets: updatedBullets,
-        projectBullet: ''
-      });
+      this.handleAddBulletBtnClick(projectId);
     }
     const updatedAddBulletClickCount = addBulletClickCount + 1;
-    this.setState({ addBulletClickCount: updatedAddBulletClickCount })
+    this.setState({ addBulletClickCount: updatedAddBulletClickCount });
   }
 
-  handleAddFirstBulletClick() {
+  handleFirstBulletBtnClick() {
     const projectName = this.state.projectName;
     const projectDate = this.state.projectDate;
     const updatedBullets = this.addBullet();
@@ -91,23 +74,22 @@ export default class Projects extends React.Component {
     const projects = this.state.projects;
     const updatedProjects = projects.concat(project);
     this.setState({
-      projects: updatedProjects,
-      projectBullets: updatedBullets,
       projectBullet: '',
+      projectBullets: updatedBullets,
       projectId: id,
-      editProjectId: id
+      editProjectId: id,
+      projects: updatedProjects
     });
     return project;
   }
 
-  handleEditProjectModeAddBulletClick() {
+  handleAddBulletBtnClick(projectId) {
     const projects = this.state.projects;
     const projectName = this.state.projectName;
     const projectDate = this.state.projectDate;
-    const editProjectId = this.state.editProjectId;
-    const updatedBullets = this.addBullet()
+    const updatedBullets = this.addBullet();
     const updatedProjects = projects.map(project => {
-      if (project.id == editProjectId) {
+      if (project.id == projectId) {
         project.projectName = projectName;
         project.projectDate = projectDate;
         project.projectBullets = updatedBullets;
@@ -115,14 +97,13 @@ export default class Projects extends React.Component {
       return project;
     });
     this.setState({
-      projects: updatedProjects,
-      projectBullets: updatedBullets,
       projectBullet: '',
+      projectBullets: updatedBullets,
+      projects: updatedProjects,
     });
   }
 
   addBullet() {
-    const isEditProjectMode = this.state.isEditProjectMode;
     const bulletText = this.state.projectBullet;
     const id = generateId();
     const key = id;
@@ -132,6 +113,7 @@ export default class Projects extends React.Component {
       key
     };
     const projects = this.state.projects;
+    const isEditProjectMode = this.state.isEditProjectMode;
     let bullets = []
     if (isEditProjectMode) {
       const editProjectId = this.state.editProjectId;
@@ -158,28 +140,24 @@ export default class Projects extends React.Component {
   }
 
   handleProjectNameClick(e) {
-    let target = e.target;
-    while(target.id === "") {
-      target = target.parentNode;
-    }
-    const id = target.id;
+    const projectId = getId(e);
     const projects = this.state.projects;
-    const clickedProject = projects.filter(project => project.id == id)[0];
+    const clickedProject = projects.filter(project => project.id == projectId)[0];
     const clickedProjectName = clickedProject.projectName;
     const clickedProjectDate = clickedProject.projectDate;
     this.setState({
-      isEditProjectMode: true,
-      editProjectId: id,
       projectName: clickedProjectName,
-      projectDate: clickedProjectDate
+      projectDate: clickedProjectDate,
+      isEditProjectMode: true,
+      editProjectId: projectId
     });
   }
 
   handleSaveProjectClick() {
-    const projects = this.state.projects;
     const projectName = this.state.projectName;
     const projectDate = this.state.projectDate;
     const editProjectId = this.state.editProjectId;
+    const projects = this.state.projects;
     const updatedProjects = projects.map(project => {
       if (project.id == editProjectId) {
         project.projectName = projectName;
@@ -192,8 +170,8 @@ export default class Projects extends React.Component {
   }
 
   handleDeleteProjectClick() {
-    const projects = this.state.projects;
     const deleteProjectId = this.state.editProjectId;
+    const projects = this.state.projects;
     const savedProjects = projects.filter(project => project.id != deleteProjectId);
     this.handleNewProjectClick()
     this.setState({
@@ -204,11 +182,7 @@ export default class Projects extends React.Component {
   }
 
   handleBulletClick(e) {
-    let bulletTarget = e.target;
-    while (bulletTarget.id == "") {
-      bulletTarget = bulletTarget.parentNode;
-    }
-    const bulletId = bulletTarget.id;
+    const bulletId = getId(e);
     let projectTarget = e.target;
     while (projectTarget.id == "" || projectTarget.id === bulletId) {
       projectTarget = projectTarget.parentNode;
@@ -219,7 +193,6 @@ export default class Projects extends React.Component {
       editBulletId: bulletId,
       editProjectId: projectId,
       addBulletClickCount: 1
-
     });
     this.updateForm(projectId, bulletId)
   }
@@ -253,17 +226,18 @@ export default class Projects extends React.Component {
     });
     const updatedProjects = projects.map(project => {
       if (project.id == projectId) {
-        project.projectBullets = updatedBullets;
         project.projectName = projectName;
         project.projectDate = projectDate;
+        project.projectBullets = updatedBullets;
       }
       return project
     });
     this.setState({
       projects: updatedProjects,
       projectBullets: updatedBullets,
+      projectBullet: '',
       isEditBulletMode: false,
-      projectBullet: ''
+      isEditProjectMode: true
     });
   }
 
@@ -280,11 +254,15 @@ export default class Projects extends React.Component {
       }
       return project;
     });
+    if (updatedBullets.length === 1) {
+
+    }
     this.setState({
       projects: updatedProjects,
       projectBullets: updatedBullets,
+      projectBullet: '',
       isEditBulletMode: false,
-      projectBullet: ''
+      isEditProjectMode: true
     });
   }
 
@@ -309,7 +287,7 @@ export default class Projects extends React.Component {
           isEditBulletMode={isEditBulletMode}
           editProjectId={editProjectId}
           handleInputChange={this.handleInputChange}
-          handleAddBulletClick={this.handleAddBulletClick}
+          handleBulletBtnClick={this.handleBulletBtnClick}
           handleNewProjectClick={this.handleNewProjectClick}
           handleProjectNameClick={this.handleProjectNameClick}
           handleSaveProjectClick={this.handleSaveProjectClick}
@@ -327,4 +305,12 @@ export default class Projects extends React.Component {
 
 function generateId() {
   return Math.random();
+}
+
+function getId(e) {
+    let target = e.target;
+    while (target.id == "") {
+      target = target.parentNode;
+    }
+    return target.id;
 }

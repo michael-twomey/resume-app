@@ -10,7 +10,6 @@ export default class Skills extends React.Component {
       frontendValue: '',
       backendSkills: [],
       backendValue: ''
-
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFrontendAddClick = this.handleFrontendAddClick.bind(this);
@@ -68,7 +67,6 @@ export default class Skills extends React.Component {
     const frontendValue = this.state.frontendValue;
     const backendSkills = this.state.backendSkills;
     const backendValue = this.state.backendValue;
-
     if (isSkillsFormOn) {
       return (
         <SkillsForm
