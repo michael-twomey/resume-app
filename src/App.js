@@ -1,4 +1,5 @@
 import React from 'react';
+import LandingPage from './LandingPage/LandingPage';
 import Contact from './Contact/Contact';
 import Skills from './Skills/Skills';
 import ProjAdv from './ProjAdv/ProjAdv';
@@ -8,7 +9,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isContactFormOn: true,
+      isLandingPageOn: true,
+      isContactFormOn: false,
       isSkillsFormOn: false,
       isProjectsFormOn: false,
       isAdventuresFormOn: false,
@@ -16,12 +18,9 @@ export default class App extends React.Component {
     }
     this.handleContactPrevClick = this.handleContactPrevClick.bind(this);
     this.handleSkillsPrevClick = this.handleSkillsPrevClick.bind(this);
-    this.handleProjectsPrevClick = this.handleProjectsPrevClick.bind(this);
-    this.handleAdventuresPrevClick = this.handleAdventuresPrevClick.bind(this);
     this.handleContactResClick = this.handleContactResClick.bind(this);
     this.handleSkillsResClick = this.handleSkillsResClick.bind(this);
-    this.handleProjectsResClick = this.handleProjectsResClick.bind(this);
-    this.handleAdventuresResClick = this.handleAdventuresResClick.bind(this);
+    this.handleStartClick = this.handleStartClick.bind(this);
   }
 
   handleContactPrevClick() {
@@ -34,20 +33,6 @@ export default class App extends React.Component {
   handleSkillsPrevClick() {
     this.setState({
       isSkillsFormOn: false,
-      isResumeOn: true
-    });
-  }
-
-  handleProjectsPrevClick() {
-    this.setState({
-      isProjectsFormOn: false,
-      isResumeOn: true
-    });
-  }
-
-  handleAdventuresPrevClick() {
-    this.setState({
-      isAdventuresFormOn: false,
       isResumeOn: true
     });
   }
@@ -80,35 +65,29 @@ export default class App extends React.Component {
     });
   }
 
-  handleProjectsResClick() {
-    this.setState({
-      isProjectsFormOn: true,
-      isResumeOn: false
-    });
-  }
-
-  handleAdventuresResClick() {
-    this.setState({
-      isAdventuresFormOn: true,
-      isResumeOn: false
-    });
-  }
-
   handleProjAdvResClick(sectionName) {
     if (sectionName === 'Projects') {
       this.setState({
-        isProjFormOn: true,
+        isProjectsFormOn: true,
         isResumeOn: false
       });
     } else {
       this.setState({
         isAdventuresFormOn: true,
-        isResumeOn: true
+        isResumeOn: false
       });
     }
   }
+
+  handleStartClick() {
+    this.setState({
+      isContactFormOn: true,
+      isLandingPageOn: false
+    });
+  }
   
   render() {
+    const isLandingPageOn = this.state.isLandingPageOn;
     const isContactFormOn = this.state.isContactFormOn;
     const isSkillsFormOn = this.state.isSkillsFormOn;
     const isProjectsFormOn = this.state.isProjectsFormOn;
@@ -116,6 +95,9 @@ export default class App extends React.Component {
     const isResumeOn = this.state.isResumeOn;
     return (
       <div className="res-app-container">
+        <LandingPage
+          isLandingPageOn={isLandingPageOn}
+          handleStartClick={this.handleStartClick} />
         <Contact 
           handleContactPrevClick={this.handleContactPrevClick}
           isContactFormOn={isContactFormOn}
@@ -141,8 +123,8 @@ export default class App extends React.Component {
           isResumeOn={isResumeOn} 
           handleContactResClick={this.handleContactResClick}
           handleSkillsResClick={this.handleSkillsResClick}
-          handleProjectsResClick={this.handleProjectsResClick}
-          handleAdventuresResClick={this.handleAdventuresResClick} />
+          handleProjectsResClick={() => this.handleProjAdvResClick('Projects')}
+          handleAdventuresResClick={() => this.handleProjAdvResClick('Adventures')} />
       </div>
     );
   }

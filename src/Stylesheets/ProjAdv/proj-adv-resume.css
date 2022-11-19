@@ -18,6 +18,12 @@
   grid-column: 2 / 3;
 }
 
+.bullet-container {
+  display: grid;
+  gap: 0.25em;
+  grid-template-columns: min-content 1fr;
+}
+
 .proj-adv-block {
   display: grid;
   grid-template-columns: 1fr;
