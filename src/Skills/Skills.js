@@ -26,7 +26,11 @@ export default class Skills extends React.Component {
 
   handleFrontendAddClick(e) {
     e.preventDefault();
-    const newFrontendSkill = this.state.frontendValue;
+    const frontendSkill = this.state.frontendValue;
+    const newFrontendSkill = {
+      skill: frontendSkill,
+      key: generateId()
+    }
     const frontendSkills = this.state.frontendSkills;
     const updatedFrontendSkills = frontendSkills.concat(newFrontendSkill);
     this.setState({
@@ -36,8 +40,12 @@ export default class Skills extends React.Component {
   }
 
   handleBackendAddClick(e) {
-    e.preventDefault()
-    const newBackendSkill = this.state.backendValue;
+    e.preventDefault();
+    const backendSkill = this.state.backendValue;
+    const newBackendSkill = {
+      skill: backendSkill,
+      key: generateId()
+    };
     const backendSkills = this.state.backendSkills;
     const updatedBackendSkills = backendSkills.concat(newBackendSkill);
     this.setState({
@@ -49,14 +57,14 @@ export default class Skills extends React.Component {
   removeFrontendSkill(e) {
     const delFrontendSkill = e.target.textContent;
     const frontendSkills = this.state.frontendSkills;
-    const updatedFrontendSkills = frontendSkills.filter(skill => skill !== delFrontendSkill);
+    const updatedFrontendSkills = frontendSkills.filter(skill => skill.skill !== delFrontendSkill);
     this.setState({ frontendSkills: updatedFrontendSkills });
   }
 
   removeBackendSkill(e) {
     const delBackendSkill = e.target.textContent;
     const backendSkills = this.state.backendSkills;
-    const updatedBackendSkills = backendSkills.filter(skill => skill !== delBackendSkill);
+    const updatedBackendSkills = backendSkills.filter(skill => skill.skill !== delBackendSkill);
     this.setState({ backendSkills: updatedBackendSkills });
   }
 
@@ -90,3 +98,8 @@ export default class Skills extends React.Component {
     } return;
   }
 }
+
+function generateId() {
+  return Math.random()
+}
+

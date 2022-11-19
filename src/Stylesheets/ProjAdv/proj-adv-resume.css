@@ -32,7 +32,6 @@
 .block-toprow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5em;
   grid-row: 1 / 2;
   justify-content: space-between;
 }
@@ -60,4 +59,17 @@
   display: grid;
   gap: 0.25em;
   grid-template-columns: min-content 1fr;
+}
+
+.res-bullet-text {
+  /* hyphens: auto;
+  word-break: break-all;
+  word-wrap: break-word; */
+}
+
+@media(max-width: 500px) {
+  .block-toprow {
+    flex-direction: column;
+    gap: 0.25em;
+  }
 }

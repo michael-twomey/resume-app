@@ -7,8 +7,9 @@ export default class SkillsForm extends React.Component {
     return (
       <li 
         className="skill"
+        key={skill.key}
         onClick={isFrontend ? this.props.removeFrontendSkill : this.props.removeBackendSkill}>
-        {skill}
+        {skill.skill}
       </li>
     );
   }
