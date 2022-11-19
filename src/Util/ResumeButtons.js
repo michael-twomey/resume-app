@@ -1,7 +1,7 @@
 import '../Stylesheets/resume-buttons.css';
 
 export default function ResumeButtons(props) {
-  if (props.isResumeOn) {
+  if (props.isResumeOn && props.areResumeBtnsOn) {
     return (
       <div className="res-btn-row">
         <button className="res-btn" data-text="Contact" onClick={props.handleContactResClick}>
@@ -16,10 +16,14 @@ export default function ResumeButtons(props) {
         <button className="res-btn" data-text="Adventures" onClick={props.handleAdventuresResClick}>
           <span className="btn-span">Adventures</span>
         </button>
-        <button className="res-btn" data-text="Export">
+        <button className="res-btn" data-text="Export" onClick={props.handleExportClick}>
           <span className="btn-span">Export</span>
         </button>
       </div>
+    );
+  } else if (props.isResumeOn) {
+    return (
+      <div className="reset" onClick={props.handleResetResBtnsClick}>.</div>
     );
   }
 }

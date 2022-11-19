@@ -14,13 +14,16 @@ export default class App extends React.Component {
       isSkillsFormOn: false,
       isProjectsFormOn: false,
       isAdventuresFormOn: false,
-      isResumeOn: false
+      isResumeOn: false,
+      areResumeBtnsOn: true
     }
     this.handleContactPrevClick = this.handleContactPrevClick.bind(this);
     this.handleSkillsPrevClick = this.handleSkillsPrevClick.bind(this);
     this.handleContactResClick = this.handleContactResClick.bind(this);
     this.handleSkillsResClick = this.handleSkillsResClick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
+    this.handleExportClick = this.handleExportClick.bind(this);
+    this.handleResetResBtnsClick = this.handleResetResBtnsClick.bind(this);
   }
 
   handleContactPrevClick() {
@@ -85,6 +88,14 @@ export default class App extends React.Component {
       isLandingPageOn: false
     });
   }
+
+  handleExportClick() {
+    this.setState({ areResumeBtnsOn: false });
+  }
+
+  handleResetResBtnsClick() {
+    this.setState({ areResumeBtnsOn: true });
+  }
   
   render() {
     const isLandingPageOn = this.state.isLandingPageOn;
@@ -93,6 +104,7 @@ export default class App extends React.Component {
     const isProjectsFormOn = this.state.isProjectsFormOn;
     const isAdventuresFormOn = this.state.isAdventuresFormOn;
     const isResumeOn = this.state.isResumeOn;
+    const areResumeBtnsOn = this.state.areResumeBtnsOn;
     return (
       <div className="res-app-container">
         <LandingPage
@@ -120,11 +132,14 @@ export default class App extends React.Component {
           isProjAdvFormOn={isAdventuresFormOn}
           isResumeOn={isResumeOn} />
         <ResumeButtons
-          isResumeOn={isResumeOn} 
+          isResumeOn={isResumeOn}
+          areResumeBtnsOn={areResumeBtnsOn}
           handleContactResClick={this.handleContactResClick}
           handleSkillsResClick={this.handleSkillsResClick}
           handleProjectsResClick={() => this.handleProjAdvResClick('Projects')}
-          handleAdventuresResClick={() => this.handleProjAdvResClick('Adventures')} />
+          handleAdventuresResClick={() => this.handleProjAdvResClick('Adventures')}
+          handleExportClick={this.handleExportClick}
+          handleResetResBtnsClick={this.handleResetResBtnsClick} />
       </div>
     );
   }
