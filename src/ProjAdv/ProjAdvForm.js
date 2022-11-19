@@ -1,41 +1,41 @@
 import React from 'react';
 import Input from '../Util/Input';
-import ProjectsPreview from './ProjectsPreview';
+import ProjAdvPreview from './ProjAdvPreview';
 import BulletButton from '../Util/BulletButton';
 import UpdateButtons from '../Util/UpdateButtons';
 import '../Stylesheets/form.css';
 import '../Stylesheets/ProjAdv/proj-adv-form.css';
 
-export default class ProjectsForm extends React.Component {
+export default class ProjAdvForm extends React.Component {
   
   render() {
     return (
       <div className="proj-adv-form-container">
-        <h1 className="heading">Projects</h1>
+        <h1 className="heading">{this.props.heading}</h1>
         <form className="form">
           <Input
-            htmlFor="project-name"
-            id="project-name"
-            labelText="Project Name:"
+            htmlFor="name"
+            id="name"
+            labelText={this.props.label + ' Name:'}
             type="text"
-            value={this.props.projectName}
-            varName="projectName"
+            value={this.props.name}
+            varName="name"
             handleInputChange={this.props.handleInputChange} />
           <Input
-            htmlFor="project-date"
-            id="project-date"
-            labelText="Project Date:"
+            htmlFor="date"
+            id="date"
+            labelText={this.props.label + ' Date:'}
             type="text"
-            value={this.props.projectDate}
-            varName="projectDate"
+            value={this.props.date}
+            varName="date"
             handleInputChange={this.props.handleInputChange} />
           <div className="label-input-container">
-            <label htmlFor="project-bullet">Project Bullet:</label>
+            <label htmlFor="bullet">{this.props.label + ' Bullet:'}</label>
             <textarea
-              id="project-bullet"
-              name="projectBullet"
+              id="bullet"
+              name="bullet"
               rows="4"
-              value={this.props.projectBullet}
+              value={this.props.bullet}
               onChange={this.props.handleInputChange} >
             </textarea>
           </div>
@@ -46,18 +46,18 @@ export default class ProjectsForm extends React.Component {
             handleUpdateBulletClick={this.props.handleUpdateBulletClick}
             handleDeleteBulletClick={this.props.handleDeleteBulletClick} />
         </form>
-        <ProjectsPreview 
-          projects={this.props.projects}
-          handleProjectNameClick={this.props.handleProjectNameClick}
+        <ProjAdvPreview 
+          projsAdvs={this.props.projsAdvs}
+          handleProjAdvNameClick={this.props.handleProjAdvNameClick}
           handleBulletClick={this.props.handleBulletClick}
-          editProjectId={this.props.editProjectId} />
+          editProjAdvId={this.props.editProjAdvId} />
         <UpdateButtons 
-          isEditProjectMode={this.props.isEditProjectMode}
+          isEditProjAdvMode={this.props.isEditProjAdvMode}
           isEditBulletMode={this.props.isEditBulletMode}
-          projects={this.props.projects}
-          handleSaveProjectClick={this.props.handleSaveProjectClick}
-          handleDeleteProjectClick={this.props.handleDeleteProjectClick}
-          handleNewProjectClick={this.props.handleNewProjectClick}
+          projsAdvs={this.props.projsAdvs}
+          handleSaveProjAdvClick={this.props.handleSaveProjAdvClick}
+          handleDeleteProjAdvClick={this.props.handleDeleteProjAdvClick}
+          handleNewProjAdvClick={this.props.handleNewProjAdvClick}
           handlePrevClick={this.props.handlePrevClick} />
       </div>
     );

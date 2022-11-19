@@ -1,8 +1,7 @@
 import React from 'react';
 import Contact from './Contact/Contact';
 import Skills from './Skills/Skills';
-import Projects from './Projects/Projects';
-import Adventures from './Adventures/Adventures';
+import ProjAdv from './ProjAdv/ProjAdv';
 import ResumeButtons from './Util/ResumeButtons';
 
 export default class App extends React.Component {
@@ -53,6 +52,20 @@ export default class App extends React.Component {
     });
   }
 
+  handleProjAdvPrevClick(sectionName) {
+    if (sectionName === 'Projects') {
+      this.setState({
+        isProjectsFormOn: false,
+        isResumeOn: true
+      });
+    } else {
+      this.setState({
+        isAdventuresFormOn: false,
+        isResumeOn: true
+      });
+    }
+  }
+
   handleContactResClick() {
     this.setState({ 
       isContactFormOn: true,
@@ -80,6 +93,20 @@ export default class App extends React.Component {
       isResumeOn: false
     });
   }
+
+  handleProjAdvResClick(sectionName) {
+    if (sectionName === 'Projects') {
+      this.setState({
+        isProjFormOn: true,
+        isResumeOn: false
+      });
+    } else {
+      this.setState({
+        isAdventuresFormOn: true,
+        isResumeOn: true
+      });
+    }
+  }
   
   render() {
     const isContactFormOn = this.state.isContactFormOn;
@@ -97,14 +124,18 @@ export default class App extends React.Component {
           handleSkillsPrevClick={this.handleSkillsPrevClick}
           isSkillsFormOn={isSkillsFormOn}
           isResumeOn={isResumeOn} />
-        <Projects
-          handleProjectsPrevClick={this.handleProjectsPrevClick} 
-          isProjectsFormOn={isProjectsFormOn}
+        <ProjAdv
+          heading='Projects'
+          label='Project'
+          handleProjAdvPrevClick={() => this.handleProjAdvPrevClick('Projects')} 
+          isProjAdvFormOn={isProjectsFormOn}
           isResumeOn={isResumeOn}
         />
-        <Adventures 
-          handleAdventuresPrevClick={this.handleAdventuresPrevClick}
-          isAdventuresFormOn={isAdventuresFormOn}
+        <ProjAdv
+          heading='Adventures'
+          label='Adventure'
+          handleProjAdvPrevClick={() => this.handleProjAdvPrevClick('Adventures')}
+          isProjAdvFormOn={isAdventuresFormOn}
           isResumeOn={isResumeOn} />
         <ResumeButtons
           isResumeOn={isResumeOn} 

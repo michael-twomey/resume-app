@@ -1,28 +1,27 @@
-import React from 'react';
 import '../Stylesheets/ProjAdv/proj-adv-resume.css'
 
-export default function AventuresResume(props) {
-  const adventures = props.adventures;
+export default function ProjAdvResume(props) {
+  const projsAdvs = props.projsAdvs;
   return (
     <div className="proj-adv-res-container">
-      <h2 className="proj-adv-head">Adventures</h2>
+      <h2 className="proj-adv-head">{props.heading}</h2>
       <div className="proj-adv-content-container">
-        {adventures.map(adventure => {
-          const adventureName = adventure.adventureName;
-          const adventureDate = adventure.adventureDate;
-          const adventureBullets = adventure.adventureBullets;
+        {projsAdvs.map(projAdv => {
+          const name = projAdv.name;
+          const date = projAdv.date;
+          const bullets = projAdv.bullets;
           return (
             <div className="proj-adv-block">
               <div className="block-toprow">
-                <h3 className="block-name">{adventureName}</h3>
-                <p className="block-date">{adventureDate}</p>
+                <h3 className="block-name">{name}</h3>
+                <p className="block-date">{date}</p>
               </div>
               <ul className="block-details-list">
-                {adventureBullets.map(bullet => {
+                {bullets.map(bullet => {
                   return (
                     <div className="block-detail">
                       <li>&#x2022;</li>
-                      <li>{bullet}</li>
+                      <li>{bullet.bulletText}</li>
                     </div>
                   );
                 })}
