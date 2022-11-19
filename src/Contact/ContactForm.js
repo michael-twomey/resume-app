@@ -1,14 +1,14 @@
-import React from 'react';
-import Input from '../Util/Input';
-import '../Stylesheets/form.css';
-import '../Stylesheets/Contact/contact-form.css';
+import React from 'react'
+import Input from '../Util/Input'
+import '../Stylesheets/form.css'
+import '../Stylesheets/Contact/contact-form.css'
 
-export default function ContactForm(props) {
+export default function ContactForm (props) {
   return (
     <div className="contact-form">
       <h1 className="heading">Contact</h1>
       <form className="form">
-        <Input 
+        <Input
           htmlFor="name"
           id="name"
           labelText="Name:"
@@ -16,7 +16,7 @@ export default function ContactForm(props) {
           value={props.name}
           varName="name"
           handleInputChange={props.handleInputChange} />
-        <Input 
+        <Input
           htmlFor="email"
           id="email"
           labelText="Email:"
@@ -24,7 +24,7 @@ export default function ContactForm(props) {
           value={props.email}
           varName="email"
           handleInputChange={props.handleInputChange} />
-        <Input 
+        <Input
           htmlFor="phone"
           id="phone"
           labelText="Phone:"
@@ -32,7 +32,7 @@ export default function ContactForm(props) {
           value={props.phone}
           varName="phone"
           handleInputChange={props.handleInputChange} />
-        <Input 
+        <Input
           htmlFor="website"
           id="website"
           labelText="Website:"
@@ -40,21 +40,21 @@ export default function ContactForm(props) {
           value={props.website}
           varName="website"
           handleInputChange={props.handleInputChange} />
-        <Input 
+        <Input
           htmlFor="github"
           id="github"
           labelText="Github:"
           type="text"
           value={props.github}
           varName="github"
-          handleInputChange={props.handleInputChange} /> 
-        <button 
-          className="btn contact-prev-btn" 
-          type="submit" 
+          handleInputChange={props.handleInputChange} />
+        <button
+          className="btn contact-prev-btn"
+          type="submit"
           onClick={props.handlePrevClick}>
           Preview
         </button>
       </form>
     </div>
-  );
+  )
 }

@@ -1,6 +1,7 @@
-import NewProjAdvButton from "./NewProjAdvButton";
+import React from 'react'
+import NewProjAdvButton from './NewProjAdvButton'
 
-export default function UpdateButtons(props) {
+export default function UpdateButtons (props) {
   if (props.isEditProjAdvMode) {
     return (
       <div className="proj-adv-form-btm-btns">
@@ -13,7 +14,7 @@ export default function UpdateButtons(props) {
           handleNewProjAdvClick={props.handleNewProjAdvClick} />
         <button className="btn proj-adv-prev-btn" onClick={props.handlePrevClick}>Preview</button>
       </div>
-    );
+    )
   }
   if (props.isEditBulletMode) {
     return (
@@ -23,8 +24,8 @@ export default function UpdateButtons(props) {
           handleNewProjAdvtClick={props.handleNewProjAdvClick} />
         <button className="btn proj-adv-prev-btn" onClick={props.handlePrevClick}>Preview</button>
       </div>
-    );
-  } 
+    )
+  }
   return (
     <div className="proj-adv-form-btm-btns">
         <NewProjAdvButton
@@ -32,5 +33,5 @@ export default function UpdateButtons(props) {
           handleNewProjAdvClick={props.handleNewProjAdvClick} />
       <button className="btn proj-adv-prev-btn" onClick={props.handlePrevClick}>Preview</button>
     </div>
-  );
+  )
 }

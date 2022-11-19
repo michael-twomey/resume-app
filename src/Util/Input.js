@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-export default function Input(props) {
+export default function Input (props) {
   return (
     <div className="label-input-container">
       <label htmlFor={props.htmlFor}>{props.labelText}</label>
@@ -12,5 +12,5 @@ export default function Input(props) {
           value={props.value}
           onChange={props.handleInputChange} />
     </div>
-  );
+  )
 }

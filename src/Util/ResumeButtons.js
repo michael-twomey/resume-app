@@ -1,6 +1,7 @@
-import '../Stylesheets/resume-buttons.css';
+import React from 'react'
+import '../Stylesheets/resume-buttons.css'
 
-export default function ResumeButtons(props) {
+export default function ResumeButtons (props) {
   if (props.isResumeOn && props.areResumeBtnsOn) {
     return (
       <div className="res-btn-row">
@@ -20,10 +21,10 @@ export default function ResumeButtons(props) {
           <span className="btn-span">Export</span>
         </button>
       </div>
-    );
+    )
   } else if (props.isResumeOn) {
     return (
       <div className="reset" onClick={props.handleResetResBtnsClick}>.</div>
-    );
+    )
   }
 }

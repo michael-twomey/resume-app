@@ -1,14 +1,13 @@
-import React from 'react';
-import Input from '../Util/Input';
-import ProjAdvPreview from './ProjAdvPreview';
-import BulletButton from '../Util/BulletButton';
-import UpdateButtons from '../Util/UpdateButtons';
-import '../Stylesheets/form.css';
-import '../Stylesheets/ProjAdv/proj-adv-form.css';
+import React from 'react'
+import Input from '../Util/Input'
+import ProjAdvPreview from './ProjAdvPreview'
+import BulletButton from '../Util/BulletButton'
+import UpdateButtons from '../Util/UpdateButtons'
+import '../Stylesheets/form.css'
+import '../Stylesheets/ProjAdv/proj-adv-form.css'
 
 export default class ProjAdvForm extends React.Component {
-  
-  render() {
+  render () {
     return (
       <div className="proj-adv-form-container">
         <h1 className="heading">{this.props.heading}</h1>
@@ -46,12 +45,12 @@ export default class ProjAdvForm extends React.Component {
             handleUpdateBulletClick={this.props.handleUpdateBulletClick}
             handleDeleteBulletClick={this.props.handleDeleteBulletClick} />
         </form>
-        <ProjAdvPreview 
+        <ProjAdvPreview
           projsAdvs={this.props.projsAdvs}
           handleProjAdvNameClick={this.props.handleProjAdvNameClick}
           handleBulletClick={this.props.handleBulletClick}
           editProjAdvId={this.props.editProjAdvId} />
-        <UpdateButtons 
+        <UpdateButtons
           isEditProjAdvMode={this.props.isEditProjAdvMode}
           isEditBulletMode={this.props.isEditBulletMode}
           projsAdvs={this.props.projsAdvs}
@@ -60,6 +59,6 @@ export default class ProjAdvForm extends React.Component {
           handleNewProjAdvClick={this.props.handleNewProjAdvClick}
           handlePrevClick={this.props.handlePrevClick} />
       </div>
-    );
+    )
   }
 }

@@ -1,15 +1,16 @@
+import React from 'react'
 import '../Stylesheets/ProjAdv/proj-adv-resume.css'
 
-export default function ProjAdvResume(props) {
-  const projsAdvs = props.projsAdvs;
+export default function ProjAdvResume (props) {
+  const projsAdvs = props.projsAdvs
   return (
     <div className="proj-adv-res-container">
       <h2 className="proj-adv-head">{props.heading}</h2>
       <div className="proj-adv-content-container">
         {projsAdvs.map(projAdv => {
-          const name = projAdv.name;
-          const date = projAdv.date;
-          const bullets = projAdv.bullets;
+          const name = projAdv.name
+          const date = projAdv.date
+          const bullets = projAdv.bullets
           return (
             <div className="proj-adv-block">
               <div className="block-toprow">
@@ -23,13 +24,13 @@ export default function ProjAdvResume(props) {
                       <li>&#x2022;</li>
                       <li className="res-bullet-text">{bullet.bulletText}</li>
                     </div>
-                  );
+                  )
                 })}
               </ul>
             </div>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }

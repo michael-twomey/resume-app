@@ -1,20 +1,20 @@
-import React from 'react';
-import Input from '../Util/Input';
-import '../Stylesheets/Skills/skills-form.css';
+import React from 'react'
+import Input from '../Util/Input'
+import '../Stylesheets/Skills/skills-form.css'
 
 export default class SkillsForm extends React.Component {
-  makeSkillElement(skill, isFrontend) {
+  makeSkillElement (skill, isFrontend) {
     return (
-      <li 
+      <li
         className="skill"
         key={skill.key}
         onClick={isFrontend ? this.props.removeFrontendSkill : this.props.removeBackendSkill}>
         {skill.skill}
       </li>
-    );
+    )
   }
 
-  render() {
+  render () {
     return (
       <div className="skills-form-container">
         <h1 className="heading">Skills</h1>
@@ -27,7 +27,7 @@ export default class SkillsForm extends React.Component {
             value={this.props.frontendValue}
             varName="frontendValue"
             handleInputChange={this.props.handleInputChange} />
-          <ul className="skills-list-form">{this.props.frontendSkills.map(skill => this.makeSkillElement(skill, true))}</ul> 
+          <ul className="skills-list-form">{this.props.frontendSkills.map(skill => this.makeSkillElement(skill, true))}</ul>
           <button
             className="btn add-btn"
             onClick={this.props.handleFrontendAddClick} >
@@ -43,7 +43,7 @@ export default class SkillsForm extends React.Component {
             value={this.props.backendValue}
             varName="backendValue"
             handleInputChange={this.props.handleInputChange} />
-          <ul className="skills-list-form">{this.props.backendSkills.map(skill => this.makeSkillElement(skill, false))}</ul> 
+          <ul className="skills-list-form">{this.props.backendSkills.map(skill => this.makeSkillElement(skill, false))}</ul>
           <button
             className="btn add-btn"
             onClick={this.props.handleBackendAddClick} >
@@ -52,6 +52,6 @@ export default class SkillsForm extends React.Component {
         </form>
         <button className="btn skills-prev-btn" onClick={this.props.handlePrevClick}>Preview</button>
       </div>
-    );
+    )
   }
 }

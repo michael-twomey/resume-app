@@ -1,13 +1,13 @@
-import React from 'react';
-import LandingPage from './LandingPage/LandingPage';
-import Contact from './Contact/Contact';
-import Skills from './Skills/Skills';
-import ProjAdv from './ProjAdv/ProjAdv';
-import ResumeButtons from './Util/ResumeButtons';
+import React from 'react'
+import LandingPage from './LandingPage/LandingPage'
+import Contact from './Contact/Contact'
+import Skills from './Skills/Skills'
+import ProjAdv from './ProjAdv/ProjAdv'
+import ResumeButtons from './Util/ResumeButtons'
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       isLandingPageOn: true,
       isContactFormOn: false,
@@ -17,100 +17,100 @@ export default class App extends React.Component {
       isResumeOn: false,
       areResumeBtnsOn: true
     }
-    this.handleContactPrevClick = this.handleContactPrevClick.bind(this);
-    this.handleSkillsPrevClick = this.handleSkillsPrevClick.bind(this);
-    this.handleContactResClick = this.handleContactResClick.bind(this);
-    this.handleSkillsResClick = this.handleSkillsResClick.bind(this);
-    this.handleStartClick = this.handleStartClick.bind(this);
-    this.handleExportClick = this.handleExportClick.bind(this);
-    this.handleResetResBtnsClick = this.handleResetResBtnsClick.bind(this);
+    this.handleContactPrevClick = this.handleContactPrevClick.bind(this)
+    this.handleSkillsPrevClick = this.handleSkillsPrevClick.bind(this)
+    this.handleContactResClick = this.handleContactResClick.bind(this)
+    this.handleSkillsResClick = this.handleSkillsResClick.bind(this)
+    this.handleStartClick = this.handleStartClick.bind(this)
+    this.handleExportClick = this.handleExportClick.bind(this)
+    this.handleResetResBtnsClick = this.handleResetResBtnsClick.bind(this)
   }
 
-  handleContactPrevClick() {
-    this.setState({ 
+  handleContactPrevClick () {
+    this.setState({
       isContactFormOn: false,
       isResumeOn: true
-    });
+    })
   }
 
-  handleSkillsPrevClick() {
+  handleSkillsPrevClick () {
     this.setState({
       isSkillsFormOn: false,
       isResumeOn: true
-    });
+    })
   }
 
-  handleProjAdvPrevClick(sectionName) {
+  handleProjAdvPrevClick (sectionName) {
     if (sectionName === 'Projects') {
       this.setState({
         isProjectsFormOn: false,
         isResumeOn: true
-      });
+      })
     } else {
       this.setState({
         isAdventuresFormOn: false,
         isResumeOn: true
-      });
+      })
     }
   }
 
-  handleContactResClick() {
-    this.setState({ 
+  handleContactResClick () {
+    this.setState({
       isContactFormOn: true,
       isResumeOn: false
-    });
+    })
   }
 
-  handleSkillsResClick() {
-    this.setState({ 
+  handleSkillsResClick () {
+    this.setState({
       isSkillsFormOn: true,
       isResumeOn: false
-    });
+    })
   }
 
-  handleProjAdvResClick(sectionName) {
+  handleProjAdvResClick (sectionName) {
     if (sectionName === 'Projects') {
       this.setState({
         isProjectsFormOn: true,
         isResumeOn: false
-      });
+      })
     } else {
       this.setState({
         isAdventuresFormOn: true,
         isResumeOn: false
-      });
+      })
     }
   }
 
-  handleStartClick() {
+  handleStartClick () {
     this.setState({
       isContactFormOn: true,
       isLandingPageOn: false
-    });
+    })
   }
 
-  handleExportClick() {
-    this.setState({ areResumeBtnsOn: false });
+  handleExportClick () {
+    this.setState({ areResumeBtnsOn: false })
   }
 
-  handleResetResBtnsClick() {
-    this.setState({ areResumeBtnsOn: true });
+  handleResetResBtnsClick () {
+    this.setState({ areResumeBtnsOn: true })
   }
-  
-  render() {
-    const isLandingPageOn = this.state.isLandingPageOn;
-    const isContactFormOn = this.state.isContactFormOn;
-    const isSkillsFormOn = this.state.isSkillsFormOn;
-    const isProjectsFormOn = this.state.isProjectsFormOn;
-    const isAdventuresFormOn = this.state.isAdventuresFormOn;
-    const isResumeOn = this.state.isResumeOn;
-    const areResumeBtnsOn = this.state.areResumeBtnsOn;
+
+  render () {
+    const isLandingPageOn = this.state.isLandingPageOn
+    const isContactFormOn = this.state.isContactFormOn
+    const isSkillsFormOn = this.state.isSkillsFormOn
+    const isProjectsFormOn = this.state.isProjectsFormOn
+    const isAdventuresFormOn = this.state.isAdventuresFormOn
+    const isResumeOn = this.state.isResumeOn
+    const areResumeBtnsOn = this.state.areResumeBtnsOn
     return (
       <div className="res-app-container">
         <LandingPage
           isLandingPageOn={isLandingPageOn}
           handleStartClick={this.handleStartClick} />
-        <Contact 
+        <Contact
           handleContactPrevClick={this.handleContactPrevClick}
           isContactFormOn={isContactFormOn}
           isResumeOn={isResumeOn} />
@@ -121,7 +121,7 @@ export default class App extends React.Component {
         <ProjAdv
           heading='Projects'
           label='Project'
-          handleProjAdvPrevClick={() => this.handleProjAdvPrevClick('Projects')} 
+          handleProjAdvPrevClick={() => this.handleProjAdvPrevClick('Projects')}
           isProjAdvFormOn={isProjectsFormOn}
           isResumeOn={isResumeOn}
         />
@@ -141,6 +141,6 @@ export default class App extends React.Component {
           handleExportClick={this.handleExportClick}
           handleResetResBtnsClick={this.handleResetResBtnsClick} />
       </div>
-    );
+    )
   }
 }
