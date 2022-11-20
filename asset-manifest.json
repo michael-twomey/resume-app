@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/resume-app/static/css/main.776a2012.css",
+    "main.js": "/resume-app/static/js/main.d59f6478.js",
+    "index.html": "/resume-app/index.html",
+    "main.776a2012.css.map": "/resume-app/static/css/main.776a2012.css.map",
+    "main.d59f6478.js.map": "/resume-app/static/js/main.d59f6478.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.776a2012.css",
+    "static/js/main.d59f6478.js"
+  ]
+}
