@@ -89,7 +89,7 @@ export default class ProjAdv extends React.Component {
     const date = this.state.date
     const updatedBullets = this.addBullet()
     const updatedProjsAdvs = projsAdvs.map(projAdv => {
-      if (projAdv.id == projAdvId) {
+      if (projAdv.id === Number(projAdvId)) {
         projAdv.name = name
         projAdv.date = date
         projAdv.bullets = updatedBullets
@@ -117,7 +117,7 @@ export default class ProjAdv extends React.Component {
     let bullets = []
     if (isEditProjAdvMode) {
       const editProjAdvId = this.state.editProjAdvId
-      const editProjAdv = projsAdvs.filter(projAdv => projAdv.id == editProjAdvId)[0]
+      const editProjAdv = projsAdvs.filter(projAdv => projAdv.id === Number(editProjAdvId))[0]
       bullets = editProjAdv.bullets
     } else {
       bullets = this.state.bullets
@@ -142,7 +142,7 @@ export default class ProjAdv extends React.Component {
   handleProjAdvNameClick (e) {
     const id = getId(e)
     const projsAdvs = this.state.projsAdvs
-    const clickedProjAdv = projsAdvs.filter(projAdv => projAdv.id == id)[0]
+    const clickedProjAdv = projsAdvs.filter(projAdv => projAdv.id === Number(id))[0]
     const clickedName = clickedProjAdv.name
     const clickedDate = clickedProjAdv.date
     this.setState({
@@ -159,7 +159,7 @@ export default class ProjAdv extends React.Component {
     const editProjectAdvId = this.state.editProjAdvId
     const projsAdvs = this.state.projsAdvs
     const updatedProjsAdvs = projsAdvs.map(projAdv => {
-      if (projAdv.id == editProjectAdvId) {
+      if (projAdv.id === Number(editProjectAdvId)) {
         projAdv.name = name
         projAdv.date = date
       }
@@ -172,7 +172,7 @@ export default class ProjAdv extends React.Component {
   handleDeleteProjAdvClick () {
     const deleteProjAdvId = this.state.editProjAdvId
     const projsAdvs = this.state.projsAdvs
-    const savedProjsAdvs = projsAdvs.filter(projAdv => projAdv.id != deleteProjAdvId)
+    const savedProjsAdvs = projsAdvs.filter(projAdv => projAdv.id !== Number(deleteProjAdvId))
     this.handleNewProjAdvClick()
     this.setState({
       projsAdvs: savedProjsAdvs,
@@ -184,7 +184,7 @@ export default class ProjAdv extends React.Component {
   handleBulletClick (e) {
     const bulletId = getId(e)
     let projAdvTarget = e.target
-    while (projAdvTarget.id == '' || projAdvTarget.id === bulletId) {
+    while (projAdvTarget.id === '' || projAdvTarget.id === bulletId) {
       projAdvTarget = projAdvTarget.parentNode
     }
     const projAdvId = projAdvTarget.id
@@ -199,9 +199,9 @@ export default class ProjAdv extends React.Component {
 
   updateForm (projectId, bulletId) {
     const projsAdvs = this.state.projsAdvs
-    const editProjAdv = projsAdvs.filter(projAdv => projAdv.id == projectId)[0]
+    const editProjAdv = projsAdvs.filter(projAdv => projAdv.id === Number(projectId))[0]
     const bullets = editProjAdv.bullets
-    const editBullet = bullets.filter(bullet => bullet.id == bulletId)[0]
+    const editBullet = bullets.filter(bullet => bullet.id === Number(bulletId))[0]
     this.setState({
       name: editProjAdv.name,
       date: editProjAdv.date,
@@ -215,17 +215,17 @@ export default class ProjAdv extends React.Component {
     const projsAdvs = this.state.projsAdvs
     const name = this.state.name
     const date = this.state.date
-    const editProjAdv = projsAdvs.filter(projAdv => projAdv.id == projAdvId)[0]
+    const editProjAdv = projsAdvs.filter(projAdv => projAdv.id === Number(projAdvId))[0]
     const editBullets = editProjAdv.bullets
     const updatedBulletText = this.state.bullet
     const updatedBullets = editBullets.map(bullet => {
-      if (bullet.id == bulletId) {
+      if (bullet.id === Number(bulletId)) {
         bullet.bulletText = updatedBulletText
       }
       return bullet
     })
     const updatedProjsAdvs = projsAdvs.map(projAdv => {
-      if (projAdv.id == projAdvId) {
+      if (projAdv.id === Number(projAdvId)) {
         projAdv.name = name
         projAdv.date = date
         projAdv.bullets = updatedBullets
@@ -245,11 +245,11 @@ export default class ProjAdv extends React.Component {
     const projAdvId = this.state.editProjAdvId
     const bulletId = this.state.editBulletId
     const projsAdvs = this.state.projsAdvs
-    const editProjAdv = projsAdvs.filter(projAdv => projAdv.id == projAdvId)[0]
+    const editProjAdv = projsAdvs.filter(projAdv => projAdv.id === Number(projAdvId))[0]
     const editBullets = editProjAdv.bullets
-    const updatedBullets = editBullets.filter(bullet => bullet.id != bulletId)
+    const updatedBullets = editBullets.filter(bullet => bullet.id !== Number(bulletId))
     const updatedProjsAdvs = projsAdvs.map(projAdv => {
-      if (projAdv.id == projAdvId) {
+      if (projAdv.id === Number(projAdvId)) {
         projAdv.bullets = updatedBullets
       }
       return projAdv
@@ -311,7 +311,7 @@ function generateId () {
 
 function getId (e) {
   let target = e.target
-  while (target.id == '') {
+  while (target.id === '') {
     target = target.parentNode
   }
   return target.id

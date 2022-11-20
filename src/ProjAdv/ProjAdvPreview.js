@@ -12,7 +12,7 @@ export default function ProjAdvPreview (props) {
         const id = projAdv.id
         const key = projAdv.key
         return (
-          <li className={editProjAdvId == id ? 'proj-adv-prev-container' : ''} id={id} key={key}>
+          <li className={Number(editProjAdvId) === id ? 'proj-adv-prev-container' : ''} id={id} key={key}>
             <p className="proj-adv-form-name" onClick={props.handleProjAdvNameClick}>{name}</p>
             <p className="proj-adv-form-date">{date}</p>
             {bullets.map(bullet => {
